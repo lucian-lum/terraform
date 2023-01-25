@@ -54,7 +54,6 @@ resource "aws_codebuild_project" "test-terraform-codebuild" {
     type = "CODEPIPELINE"
   }
 
-
   environment {
     compute_type                = "BUILD_GENERAL1_SMALL"
     image                       = "aws/codebuild/standard:5.0"
@@ -62,10 +61,9 @@ resource "aws_codebuild_project" "test-terraform-codebuild" {
 
   }
 
-
   source {
     type            = "CODEPIPELINE"
-    location        = "docker/buildspec.yaml"
+    location        = "buildspec.yaml"
   }
 
   source_version = "master"
