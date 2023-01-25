@@ -28,22 +28,18 @@ resource "aws_codepipeline" "codepipeline" {
 
 
   stage {
-    name = "Deploy"
+    name = "Build"
 
     action {
-      name            = "Deploy"
-      category        = "Deploy"
+      name            = "Build"
+      category        = "Build"
       owner           = "AWS"
-      provider        = "CloudFormation"
+      provider        = "CodeBuild"
       input_artifacts = ["source_output"]
       version         = "1"
 
       configuration = {
-        ActionMode     = "REPLACE_ON_FAILURE"
-        Capabilities   = "CAPABILITY_AUTO_EXPAND,CAPABILITY_IAM"
-        OutputFileName = "CreateStackOutput.json"
-        StackName      = "MyTerraFormStack"
-        TemplatePath   = "build_output::sam-templated.yaml"
+        ProjectName = "test"
       }
     }
   }
