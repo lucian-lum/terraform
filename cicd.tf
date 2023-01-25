@@ -50,7 +50,7 @@ resource "aws_codepipeline" "codepipeline" {
 }
 
 resource "aws_codestarconnections_connection" "example" {
-  name          = "example-terraform-connection"
+  name          = "terraform-connection"
   provider_type = "GitHub"
 }
 
