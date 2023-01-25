@@ -51,13 +51,6 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
         "*"
       ],
       "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "logs:*"
-       ],
-       "Resource": "*" 
     }
   ]
 }
@@ -77,6 +70,26 @@ resource "aws_iam_role" "codebuild_role" {
         "Service": "codebuild.amazonaws.com"
       },
       "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "codebuild_policy" {
+  name = "codebuild_policy"
+  role = aws_iam_role.codebuild_role.id
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "*"
+      ],
+      "Resource": "*"
     }
   ]
 }
