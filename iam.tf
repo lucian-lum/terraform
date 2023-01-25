@@ -51,6 +51,13 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
         "*"
       ],
       "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:*"
+       ],
+       "Resource": "*" 
     }
   ]
 }
@@ -58,7 +65,7 @@ EOF
 }
 
 resource "aws_iam_role" "codebuild_role" {
-  name = "test-terraform-codebuild_role"
+  name = "test-terraform-codebuild-role"
 
   assume_role_policy = <<EOF
 {
